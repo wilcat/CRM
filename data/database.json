@@ -1,0 +1,697 @@
+{
+  "_seq": {
+    "users": 4,
+    "clientes": 5,
+    "produtos": 4,
+    "vendas": 6,
+    "itens_venda": 4,
+    "estoque_movimentos": 3,
+    "orcamentos": 2,
+    "itens_orcamento": 4,
+    "ordens_servico": 3,
+    "financeiro": 7,
+    "producoes": 5,
+    "configuracoes": 1,
+    "logs": 11
+  },
+  "users": [
+    {
+      "id": 1,
+      "nome": "Administrador",
+      "email": "admin@fluxoerp.com",
+      "senha_hash": "$2a$08$tp/7qN6WtfkpoomnikuRBe9QZLPVN5YzUn2S3T.fju2QBZ9brJ5Mi",
+      "papel": "admin",
+      "criado_em": "2026-07-30T14:11:51.352Z"
+    },
+    {
+      "id": 2,
+      "nome": "Vendedor Demo",
+      "email": "vendedor@fluxoerp.com",
+      "senha_hash": "$2a$08$zPiu61c4OQoHDvVKCuwBFOsCCVfc.r51CmWkSrXLRADzTXjOPbI3q",
+      "papel": "vendedor",
+      "criado_em": "2026-07-30T14:11:51.372Z"
+    },
+    {
+      "id": 3,
+      "nome": "Financeiro Demo",
+      "email": "financeiro@fluxoerp.com",
+      "senha_hash": "$2a$08$E72W/7p2ZFQ/35A1XdOok.vbGVMqnGYuS/Y/nLWd/bEQI8bhB/ZsG",
+      "papel": "financeiro",
+      "criado_em": "2026-07-30T14:11:51.392Z"
+    },
+    {
+      "id": 4,
+      "nome": "Wilson Santos",
+      "email": "wilsonsantos.ciw@gmail.com",
+      "senha_hash": "$2a$08$j.mj9qu6NO3S548ET1Qv.uPO8WlfH5nfXIw.aTKg.jWd.K5FnVhEK",
+      "papel": "admin",
+      "criado_em": "2026-09-16T18:29:37.650Z"
+    }
+  ],
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "CONSUMIDOR",
+      "documento": "",
+      "telefone": "",
+      "email": "",
+      "tipo": "PF",
+      "criado_em": "2026-07-30T14:11:51.392Z"
+    },
+    {
+      "id": 2,
+      "nome": "POLY COSMETICOS DISTRIBUIDORA",
+      "documento": "12.345.678/0001-00",
+      "telefone": "(87) 99999-0001",
+      "email": "contato@poly.com",
+      "tipo": "PJ",
+      "criado_em": "2026-07-30T14:11:51.392Z"
+    },
+    {
+      "id": 3,
+      "nome": "CASA DAS BALAS LTDA",
+      "documento": "23.456.789/0001-00",
+      "telefone": "(87) 99999-0002",
+      "email": "financeiro@casadasbalas.com",
+      "tipo": "PJ",
+      "criado_em": "2026-07-30T14:11:51.392Z"
+    },
+    {
+      "id": 4,
+      "nome": "PARÓQUIA DO SAGRADO CORAÇÃO DE JESUS",
+      "documento": "34.567.890/0001-00",
+      "telefone": "(87) 99999-0003",
+      "email": "",
+      "tipo": "PJ",
+      "criado_em": "2026-07-30T14:11:51.392Z"
+    },
+    {
+      "id": 5,
+      "nome": "MUNICIPIO DE JUCATI",
+      "documento": "45.678.901/0001-00",
+      "telefone": "(87) 99999-0004",
+      "email": "gabinete@jucati.pe.gov.br",
+      "tipo": "PJ",
+      "criado_em": "2026-07-30T14:11:51.392Z"
+    }
+  ],
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Bala de goma sortida 1kg",
+      "codigo": "PRD-001",
+      "preco": 20,
+      "custo": 12,
+      "estoque": 101,
+      "estoque_minimo": 20,
+      "categoria": "Doces",
+      "criado_em": "2026-07-30T14:11:51.392Z",
+      "atualizado_em": "2026-07-30T14:12:45.186Z"
+    },
+    {
+      "id": 2,
+      "nome": "Kit cosmético facial",
+      "codigo": "PRD-002",
+      "preco": 80,
+      "custo": 45,
+      "estoque": 8,
+      "estoque_minimo": 10,
+      "categoria": "Cosméticos",
+      "criado_em": "2026-07-30T14:11:51.393Z"
+    },
+    {
+      "id": 3,
+      "nome": "Impressão gráfica A3 (unid)",
+      "codigo": "PRD-003",
+      "preco": 4.25,
+      "custo": 1.5,
+      "estoque": 500,
+      "estoque_minimo": 50,
+      "categoria": "Gráfica",
+      "criado_em": "2026-07-30T14:11:51.393Z"
+    },
+    {
+      "id": 4,
+      "nome": "Serviço de manutenção mensal",
+      "codigo": "SRV-001",
+      "preco": 600,
+      "custo": 0,
+      "estoque": 9999,
+      "estoque_minimo": 0,
+      "categoria": "Serviços",
+      "criado_em": "2026-07-30T14:11:51.393Z"
+    }
+  ],
+  "vendas": [
+    {
+      "id": 1,
+      "numero": 12273,
+      "cliente_id": 1,
+      "data": "2026-06-30",
+      "situacao": "ENTREGUE_PAGO",
+      "segmento": "RAPIDA",
+      "valor": 20,
+      "criado_em": "2026-07-30T14:11:51.393Z"
+    },
+    {
+      "id": 2,
+      "numero": 12272,
+      "cliente_id": 2,
+      "data": "2026-06-30",
+      "situacao": "CONCRETIZADA",
+      "segmento": "DIGITAL",
+      "valor": 160,
+      "criado_em": "2026-07-30T14:11:51.394Z"
+    },
+    {
+      "id": 3,
+      "numero": 12271,
+      "cliente_id": 3,
+      "data": "2026-06-30",
+      "situacao": "EM_PRODUCAO",
+      "segmento": "OFFSET",
+      "valor": 495,
+      "criado_em": "2026-07-30T14:11:51.395Z"
+    },
+    {
+      "id": 4,
+      "numero": 12270,
+      "cliente_id": 4,
+      "data": "2026-06-30",
+      "situacao": "EM_PRODUCAO",
+      "segmento": "RAPIDA",
+      "valor": 350,
+      "criado_em": "2026-07-30T14:11:51.396Z",
+      "atualizado_em": "2026-07-30T14:16:30.142Z",
+      "financeiro_id": 6,
+      "producao_id": 5
+    },
+    {
+      "id": 5,
+      "numero": 12268,
+      "cliente_id": 5,
+      "data": "2026-06-30",
+      "situacao": "PRONTO_ENTREGA",
+      "segmento": "OFFSET",
+      "valor": 4308.84,
+      "criado_em": "2026-07-30T14:11:51.396Z"
+    },
+    {
+      "id": 6,
+      "numero": 12274,
+      "cliente_id": 3,
+      "data": "2026-07-30",
+      "situacao": "EM_PRODUCAO",
+      "segmento": "RAPIDA",
+      "valor": 980,
+      "orcamento_id": 1,
+      "criado_em": "2026-07-30T14:12:45.185Z",
+      "financeiro_id": 5,
+      "atualizado_em": "2026-07-30T14:12:45.189Z",
+      "producao_id": 4
+    }
+  ],
+  "itens_venda": [
+    {
+      "id": 1,
+      "venda_id": 1,
+      "produto_id": 1,
+      "quantidade": 1,
+      "preco_unit": 20,
+      "criado_em": "2026-07-30T14:11:51.393Z"
+    },
+    {
+      "id": 2,
+      "venda_id": 2,
+      "produto_id": 2,
+      "quantidade": 2,
+      "preco_unit": 80,
+      "criado_em": "2026-07-30T14:11:51.394Z"
+    },
+    {
+      "id": 3,
+      "venda_id": 3,
+      "produto_id": 1,
+      "quantidade": 24,
+      "preco_unit": 20,
+      "criado_em": "2026-07-30T14:11:51.396Z"
+    },
+    {
+      "id": 4,
+      "venda_id": 6,
+      "produto_id": 1,
+      "quantidade": 49,
+      "preco_unit": 20,
+      "criado_em": "2026-07-30T14:12:45.186Z"
+    }
+  ],
+  "estoque_movimentos": [
+    {
+      "id": 1,
+      "produto_id": 1,
+      "tipo": "SAIDA",
+      "quantidade": 25,
+      "motivo": "Venda #12273 / #12271",
+      "data": "2026-06-30",
+      "criado_em": "2026-07-30T14:11:51.396Z"
+    },
+    {
+      "id": 2,
+      "produto_id": 2,
+      "tipo": "SAIDA",
+      "quantidade": 2,
+      "motivo": "Venda #12272",
+      "data": "2026-06-30",
+      "criado_em": "2026-07-30T14:11:51.396Z"
+    },
+    {
+      "id": 3,
+      "produto_id": 3,
+      "tipo": "ENTRADA",
+      "quantidade": 200,
+      "motivo": "Compra fornecedor",
+      "data": "2026-06-28",
+      "criado_em": "2026-07-30T14:11:51.396Z"
+    }
+  ],
+  "orcamentos": [
+    {
+      "id": 1,
+      "numero": 5001,
+      "cliente_id": 3,
+      "data": "2026-06-29",
+      "validade": "2026-07-15",
+      "situacao": "APROVADO",
+      "segmento": "RAPIDA",
+      "valor": 980,
+      "criado_em": "2026-07-30T14:11:51.397Z",
+      "atualizado_em": "2026-07-30T14:12:45.187Z",
+      "venda_id": 6
+    },
+    {
+      "id": 2,
+      "numero": 5002,
+      "cliente_id": 4,
+      "data": "2026-07-30",
+      "validade": "2026-08-14",
+      "situacao": "ENVIADO",
+      "segmento": "DIGITAL",
+      "valor": 684.25,
+      "criado_em": "2026-07-30T14:13:19.489Z"
+    }
+  ],
+  "itens_orcamento": [
+    {
+      "id": 1,
+      "orcamento_id": 1,
+      "produto_id": 1,
+      "quantidade": 49,
+      "preco_unit": 20,
+      "criado_em": "2026-07-30T14:11:51.397Z"
+    },
+    {
+      "id": 2,
+      "orcamento_id": 2,
+      "produto_id": 3,
+      "quantidade": 1,
+      "preco_unit": 4.25,
+      "criado_em": "2026-07-30T14:13:19.490Z"
+    },
+    {
+      "id": 3,
+      "orcamento_id": 2,
+      "produto_id": 2,
+      "quantidade": 1,
+      "preco_unit": 80,
+      "criado_em": "2026-07-30T14:13:19.490Z"
+    },
+    {
+      "id": 4,
+      "orcamento_id": 2,
+      "produto_id": 4,
+      "quantidade": 1,
+      "preco_unit": 600,
+      "criado_em": "2026-07-30T14:13:19.490Z"
+    }
+  ],
+  "ordens_servico": [
+    {
+      "id": 1,
+      "numero": 301,
+      "cliente_id": 4,
+      "descricao": "Manutenção preventiva sistema de som",
+      "data_abertura": "2026-06-25",
+      "situacao": "EM_ANDAMENTO",
+      "valor": 250,
+      "criado_em": "2026-07-30T14:11:51.397Z"
+    },
+    {
+      "id": 2,
+      "numero": 300,
+      "cliente_id": 2,
+      "descricao": "Instalação de balcão expositor",
+      "data_abertura": "2026-06-20",
+      "situacao": "CONCLUIDA",
+      "valor": 400,
+      "criado_em": "2026-07-30T14:11:51.397Z"
+    },
+    {
+      "id": 3,
+      "numero": 299,
+      "cliente_id": 5,
+      "descricao": "Orçamento de rede elétrica do gabinete",
+      "data_abertura": "2026-06-18",
+      "situacao": "ABERTA",
+      "valor": 0,
+      "criado_em": "2026-07-30T14:11:51.397Z"
+    }
+  ],
+  "financeiro": [
+    {
+      "id": 1,
+      "tipo": "RECEBER",
+      "descricao": "Venda #12272 - POLY COSMETICOS",
+      "valor": 160,
+      "valor_pago": 60,
+      "pagamentos": [
+        {
+          "valor": 60,
+          "data": "2026-07-01"
+        }
+      ],
+      "vencimento": "2026-07-10",
+      "situacao": "PARCIAL",
+      "criado_em": "2026-07-30T14:11:51.397Z"
+    },
+    {
+      "id": 2,
+      "tipo": "RECEBER",
+      "descricao": "Venda #12270 - Paróquia",
+      "valor": 350,
+      "valor_pago": 350,
+      "pagamentos": [
+        {
+          "valor": 350,
+          "data": "2026-06-28"
+        }
+      ],
+      "vencimento": "2026-07-05",
+      "situacao": "PAGO",
+      "pago_em": "2026-06-28",
+      "criado_em": "2026-07-30T14:11:51.398Z"
+    },
+    {
+      "id": 3,
+      "tipo": "PAGAR",
+      "descricao": "Fornecedor de matéria-prima",
+      "valor": 1200,
+      "valor_pago": 0,
+      "pagamentos": [],
+      "vencimento": "2026-07-08",
+      "situacao": "PENDENTE",
+      "criado_em": "2026-07-30T14:11:51.398Z"
+    },
+    {
+      "id": 4,
+      "tipo": "PAGAR",
+      "descricao": "Aluguel do galpão",
+      "valor": 2200,
+      "valor_pago": 2200,
+      "pagamentos": [
+        {
+          "valor": 2200,
+          "data": "2026-06-27"
+        }
+      ],
+      "vencimento": "2026-07-05",
+      "situacao": "PAGO",
+      "pago_em": "2026-06-27",
+      "criado_em": "2026-07-30T14:11:51.398Z"
+    },
+    {
+      "id": 5,
+      "tipo": "RECEBER",
+      "descricao": "Venda #12274 - CASA DAS BALAS LTDA",
+      "valor": 980,
+      "valor_pago": 0,
+      "pagamentos": [],
+      "vencimento": "2026-07-30",
+      "situacao": "PENDENTE",
+      "criado_em": "2026-07-30T14:12:45.188Z"
+    },
+    {
+      "id": 6,
+      "tipo": "RECEBER",
+      "descricao": "Venda #12270 - PARÓQUIA DO SAGRADO CORAÇÃO DE JESUS",
+      "valor": 350,
+      "valor_pago": 0,
+      "pagamentos": [],
+      "vencimento": "2026-06-30",
+      "situacao": "PENDENTE",
+      "criado_em": "2026-07-30T14:16:30.140Z"
+    },
+    {
+      "id": 7,
+      "tipo": "RECEBER",
+      "descricao": "Produção #103 (Gráfica Offset) - 5000 folhetos institucionais 4x4",
+      "valor": 1450,
+      "valor_pago": 0,
+      "pagamentos": [],
+      "vencimento": "2026-09-16",
+      "situacao": "PENDENTE",
+      "criado_em": "2026-09-16T18:30:44.189Z"
+    }
+  ],
+  "producoes": [
+    {
+      "id": 1,
+      "numero": 101,
+      "setor": "RAPIDA",
+      "cliente_id": 3,
+      "descricao": "1000 panfletos A5 4x0",
+      "data_abertura": "2026-06-29",
+      "situacao": "CONCLUIDA",
+      "valor": 180,
+      "financeiro_gerado": false,
+      "criado_em": "2026-07-30T14:11:51.398Z"
+    },
+    {
+      "id": 2,
+      "numero": 102,
+      "setor": "DIGITAL",
+      "cliente_id": 2,
+      "descricao": "50 cartões de visita em papel couché",
+      "data_abertura": "2026-06-30",
+      "situacao": "EM_ANDAMENTO",
+      "valor": 90,
+      "criado_em": "2026-07-30T14:11:51.398Z"
+    },
+    {
+      "id": 3,
+      "numero": 103,
+      "setor": "OFFSET",
+      "cliente_id": 5,
+      "descricao": "5000 folhetos institucionais 4x4",
+      "data_abertura": "2026-06-25",
+      "situacao": "CONCLUIDA",
+      "valor": 1450,
+      "criado_em": "2026-07-30T14:11:51.399Z",
+      "atualizado_em": "2026-09-16T18:30:44.190Z",
+      "financeiro_gerado": true
+    },
+    {
+      "id": 4,
+      "numero": 104,
+      "setor": "RAPIDA",
+      "cliente_id": 3,
+      "descricao": "Referente à venda #12274",
+      "data_abertura": "2026-07-30",
+      "situacao": "EM_ANDAMENTO",
+      "valor": 980,
+      "venda_id": 6,
+      "criado_em": "2026-07-30T14:12:45.189Z",
+      "atualizado_em": "2026-07-30T14:16:44.138Z"
+    },
+    {
+      "id": 5,
+      "numero": 105,
+      "setor": "RAPIDA",
+      "cliente_id": 4,
+      "descricao": "Referente à venda #12270",
+      "data_abertura": "2026-07-30",
+      "situacao": "EM_ANDAMENTO",
+      "valor": 350,
+      "venda_id": 4,
+      "criado_em": "2026-07-30T14:16:30.141Z",
+      "atualizado_em": "2026-07-30T14:16:42.019Z"
+    }
+  ],
+  "configuracoes": [
+    {
+      "id": 1,
+      "empresa_nome": "Fluxo ERP",
+      "criado_em": "2026-07-30T14:11:57.905Z"
+    }
+  ],
+  "logs": [
+    {
+      "id": 1,
+      "usuario_id": null,
+      "usuario_nome": "wilsonsantos@gmail.com",
+      "papel": "publico",
+      "acao": "LOGIN_FALHOU",
+      "entidade": "users",
+      "entidade_id": null,
+      "detalhes": {
+        "email": "wilsonsantos@gmail.com"
+      },
+      "ip": "138.121.34.82",
+      "criado_em": "2026-09-09T13:30:57.709Z"
+    },
+    {
+      "id": 2,
+      "usuario_id": null,
+      "usuario_nome": "wilsonsantos@gmail.com",
+      "papel": "publico",
+      "acao": "LOGIN_FALHOU",
+      "entidade": "users",
+      "entidade_id": null,
+      "detalhes": {
+        "email": "wilsonsantos@gmail.com"
+      },
+      "ip": "138.121.34.82",
+      "criado_em": "2026-09-09T13:31:11.045Z"
+    },
+    {
+      "id": 3,
+      "usuario_id": null,
+      "usuario_nome": "admin@fluxoerp.com",
+      "papel": "publico",
+      "acao": "LOGIN",
+      "entidade": "users",
+      "entidade_id": 1,
+      "detalhes": {
+        "email": "admin@fluxoerp.com",
+        "papel": "admin"
+      },
+      "ip": "138.121.34.82",
+      "criado_em": "2026-09-09T13:31:19.702Z"
+    },
+    {
+      "id": 4,
+      "usuario_id": null,
+      "usuario_nome": "wilsonsantos@gmail.com",
+      "papel": "publico",
+      "acao": "LOGIN_FALHOU",
+      "entidade": "users",
+      "entidade_id": null,
+      "detalhes": {
+        "email": "wilsonsantos@gmail.com"
+      },
+      "ip": "143.0.139.238",
+      "criado_em": "2026-09-16T18:25:34.575Z"
+    },
+    {
+      "id": 5,
+      "usuario_id": null,
+      "usuario_nome": "tyoflan@gmail.com",
+      "papel": "publico",
+      "acao": "LOGIN_FALHOU",
+      "entidade": "users",
+      "entidade_id": null,
+      "detalhes": {
+        "email": "tyoflan@gmail.com"
+      },
+      "ip": "143.0.139.238",
+      "criado_em": "2026-09-16T18:28:13.225Z"
+    },
+    {
+      "id": 6,
+      "usuario_id": null,
+      "usuario_nome": "tyoflan@gmail.com",
+      "papel": "publico",
+      "acao": "LOGIN_FALHOU",
+      "entidade": "users",
+      "entidade_id": null,
+      "detalhes": {
+        "email": "tyoflan@gmail.com"
+      },
+      "ip": "143.0.139.238",
+      "criado_em": "2026-09-16T18:28:21.878Z"
+    },
+    {
+      "id": 7,
+      "usuario_id": null,
+      "usuario_nome": "tyoflan@gmail.com",
+      "papel": "publico",
+      "acao": "LOGIN_FALHOU",
+      "entidade": "users",
+      "entidade_id": null,
+      "detalhes": {
+        "email": "tyoflan@gmail.com"
+      },
+      "ip": "143.0.139.238",
+      "criado_em": "2026-09-16T18:28:56.463Z"
+    },
+    {
+      "id": 8,
+      "usuario_id": null,
+      "usuario_nome": "admin@fluxoerp.com",
+      "papel": "publico",
+      "acao": "LOGIN",
+      "entidade": "users",
+      "entidade_id": 1,
+      "detalhes": {
+        "email": "admin@fluxoerp.com",
+        "papel": "admin"
+      },
+      "ip": "143.0.139.238",
+      "criado_em": "2026-09-16T18:29:04.562Z"
+    },
+    {
+      "id": 9,
+      "usuario_id": 1,
+      "usuario_nome": "Administrador",
+      "papel": "admin",
+      "acao": "CRIAR_USUARIO",
+      "entidade": "users",
+      "entidade_id": 4,
+      "detalhes": {
+        "nome": "Wilson Santos",
+        "email": "wilsonsantos.ciw@gmail.com",
+        "papel": "admin"
+      },
+      "ip": "143.0.139.238",
+      "criado_em": "2026-09-16T18:29:37.651Z"
+    },
+    {
+      "id": 10,
+      "usuario_id": 1,
+      "usuario_nome": "Administrador",
+      "papel": "admin",
+      "acao": "ALTERAR_SITUACAO",
+      "entidade": "producoes",
+      "entidade_id": 3,
+      "detalhes": {
+        "situacao": "CONCLUIDA"
+      },
+      "ip": "143.0.139.238",
+      "criado_em": "2026-09-16T18:30:44.187Z"
+    },
+    {
+      "id": 11,
+      "usuario_id": null,
+      "usuario_nome": "admin@fluxoerp.com",
+      "papel": "publico",
+      "acao": "LOGIN",
+      "entidade": "users",
+      "entidade_id": 1,
+      "detalhes": {
+        "email": "admin@fluxoerp.com",
+        "papel": "admin"
+      },
+      "ip": "138.121.34.82",
+      "criado_em": "2026-09-23T21:32:50.082Z"
+    }
+  ]
+}

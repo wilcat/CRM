@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Consulta de Pedido — Fluxo ERP</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap');
+  :root {
+    --navy: #0F1620; --bg: #F2F3F0; --card: #FFFFFF; --line: #E4E5E1;
+    --ink: #12181F; --muted: #6B7280; --amber: #E8A33D;
+    --green: #2F9E6E; --green-bg: #E4F5EC;
+    --blue: #3C7DD9; --blue-bg: #E6EEFC;
+    --plum: #A83E82; --plum-bg: #F7E7F0;
+    --red: #D8503A; --red-bg: #FCE9E5;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--navy);
+    background-image: radial-gradient(circle at 20% 20%, rgba(232,163,61,0.12), transparent 40%);
+    font-family: 'Inter', system-ui, sans-serif; color: var(--ink);
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .card { background: var(--card); border-radius: 14px; padding: 30px 26px; width: 100%; max-width: 420px; }
+  .brand { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+  .brand-mark { width: 30px; height: 30px; border-radius: 7px; background: linear-gradient(135deg, var(--amber), #C97A1F); display: flex; align-items: center; justify-content: center; color: #10161B; font-family: 'Sora'; font-weight: 800; font-size: 15px; }
+  .brand-name { font-family: 'Sora'; font-weight: 700; font-size: 16px; }
+  .brand-sub { font-size: 10px; color: var(--muted); letter-spacing: .04em; }
+  h1 { font-family: 'Sora'; font-size: 18px; margin: 0 0 4px 0; }
+  .sub { color: var(--muted); font-size: 13px; }
+  .field { margin: 18px 0; }
+  .field input { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 8px; font-size: 15px; font-family: 'JetBrains Mono'; text-align: center; letter-spacing: .03em; }
+  .field input:focus { outline: 2px solid var(--amber); border-color: transparent; }
+  .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; background: var(--navy); color: #fff; font-weight: 600; font-size: 14px; cursor: pointer; }
+  .btn:hover { opacity: .92; }
+  .msg { font-size: 13px; padding: 10px 12px; border-radius: 8px; margin-top: 14px; display: none; }
+  .msg.erro { background: var(--red-bg); color: var(--red); display: block; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; }
+  .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .b-green { background: var(--green-bg); color: var(--green); }
+  .b-blue { background: var(--blue-bg); color: var(--blue); }
+  .b-plum { background: var(--plum-bg); color: var(--plum); }
+  .b-red { background: var(--red-bg); color: var(--red); }
+  .b-amber { background: #FBF0DC; color: #7A4C0C; }
+  .resultado { display: none; }
+  .linha { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 13.5px; }
+  .linha:last-child { border-bottom: none; }
+  .linha .label { color: var(--muted); }
+  .itens { margin-top: 14px; }
+  .item-row { display: flex; justify-content: space-between; font-size: 13px; padding: 6px 0; }
+  .voltar { text-align: center; margin-top: 16px; }
+  .voltar a { color: var(--muted); font-size: 12.5px; text-decoration: none; }
+  .voltar a:hover { text-decoration: underline; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .total { text-align: right; font-size: 17px; font-weight: 700; font-family: 'JetBrains Mono'; margin-top: 12px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="brand">
+    <div class="brand-mark">F</div>
+    <div><div class="brand-name">Fluxo ERP</div><div class="brand-sub">CONSULTA DE PEDIDO</div></div>
+  </div>
+
+  <div id="busca-area">
+    <h1>Digite o número do seu pedido</h1>
+    <div class="sub">O número está impresso no seu cupom.</div>
+    <form id="form-busca">
+      <div class="field"><input type="text" inputmode="numeric" id="numero-input" placeholder="Ex: 12345" autofocus></div>
+      <button class="btn" type="submit">Consultar</button>
+    </form>
+    <div class="msg" id="msg-erro"></div>
+  </div>
+
+  <div class="resultado" id="resultado">
+    <h1 id="res-numero"></h1>
+    <div class="sub" id="res-data"></div>
+    <div style="margin-top:12px; display:flex; gap:8px; flex-wrap:wrap;" id="res-badges"></div>
+
+    <div style="margin-top:16px;">
+      <div class="linha"><span class="label">Cliente</span><b id="res-cliente"></b></div>
+      <div class="linha"><span class="label">Segmento</span><b id="res-segmento"></b></div>
+    </div>
+
+    <div class="itens" id="res-itens"></div>
+    <div class="total" id="res-total"></div>
+    <div class="sub" id="res-pagamento" style="margin-top:8px; text-align:right;"></div>
+
+    <div class="voltar"><a href="#" id="nova-busca">← Consultar outro pedido</a></div>
+  </div>
+</div>
+
+<script>
+const fmtMoney = (v) => 'R$ ' + Number(v || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+const fmtDate = (d) => d ? new Date(d + 'T00:00:00').toLocaleDateString('pt-BR') : '-';
+
+const SITUACAO_VENDA = {
+  ENTREGUE_PAGO: ['Entregue', 'b-green'],
+  CONCRETIZADA: ['Confirmado', 'b-blue'],
+  EM_PRODUCAO: ['Em produção', 'b-blue'],
+  PRONTO_ENTREGA: ['Pronto para retirada', 'b-plum'],
+  CANCELADA: ['Cancelado', 'b-red'],
+};
+const SITUACAO_PRODUCAO = {
+  ABERTA: ['Produção: na fila', 'b-blue'],
+  EM_ANDAMENTO: ['Produção: em andamento', 'b-amber'],
+  CONCLUIDA: ['Produção: concluída', 'b-green'],
+  CANCELADA: ['Produção: cancelada', 'b-red'],
+};
+
+function badge(text, cls) {
+  return `<span class="badge ${cls}"><span class="badge-dot"></span>${text}</span>`;
+}
+
+async function consultar(numero) {
+  const msgErro = document.getElementById('msg-erro');
+  msgErro.style.display = 'none';
+  try {
+    const res = await fetch('/api/publico/pedido/' + encodeURIComponent(numero));
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.error || 'Pedido não encontrado.');
+    }
+    const d = await res.json();
+    mostrarResultado(d);
+  } catch (e) {
+    msgErro.textContent = e.message;
+    msgErro.style.display = 'block';
+  }
+}
+
+function mostrarResultado(d) {
+  document.getElementById('busca-area').style.display = 'none';
+  document.getElementById('resultado').style.display = 'block';
+
+  document.getElementById('res-numero').textContent = 'Pedido #' + d.numero;
+  document.getElementById('res-data').textContent = fmtDate(d.data);
+
+  const badges = [badge(...(SITUACAO_VENDA[d.situacao_venda] || [d.situacao_venda, 'b-blue']))];
+  if (d.situacao_producao) badges.push(badge(...(SITUACAO_PRODUCAO[d.situacao_producao] || [d.situacao_producao, 'b-blue'])));
+  badges.push(d.pago ? badge('Pago', 'b-green') : badge('Pagamento pendente', 'b-amber'));
+  document.getElementById('res-badges').innerHTML = badges.join('');
+
+  document.getElementById('res-cliente').textContent = d.cliente_nome || '-';
+  const SETOR = { RAPIDA: 'Gráfica Rápida', DIGITAL: 'Gráfica Digital', OFFSET: 'Gráfica Offset' };
+  document.getElementById('res-segmento').textContent = SETOR[d.segmento] || d.segmento || '-';
+
+  document.getElementById('res-itens').innerHTML = (d.itens || []).map(it =>
+    `<div class="item-row"><span>${it.produto}</span><span class="mono">x${it.quantidade}</span></div>`
+  ).join('') || '';
+
+  document.getElementById('res-total').textContent = 'Total: ' + fmtMoney(d.valor);
+  const saldo = Math.max(0, Number(d.valor) - Number(d.valor_pago || 0));
+  document.getElementById('res-pagamento').textContent = d.pago
+    ? 'Pagamento confirmado'
+    : (Number(d.valor_pago) > 0 ? `${fmtMoney(d.valor_pago)} pago · falta ${fmtMoney(saldo)}` : 'Nenhum pagamento registrado ainda');
+}
+
+document.getElementById('form-busca').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const numero = document.getElementById('numero-input').value.trim();
+  if (numero) consultar(numero);
+});
+
+document.getElementById('nova-busca').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('resultado').style.display = 'none';
+  document.getElementById('busca-area').style.display = 'block';
+  document.getElementById('numero-input').value = '';
+  document.getElementById('numero-input').focus();
+});
+
+// Se veio um numero na URL (link do QR Code), consulta direto sem precisar digitar.
+const params = new URLSearchParams(window.location.search);
+const numeroUrl = params.get('numero');
+if (numeroUrl) consultar(numeroUrl);
+</script>
+</body>
+</html>

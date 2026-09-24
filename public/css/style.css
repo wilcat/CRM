@@ -1,0 +1,301 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap');
+
+:root {
+  --navy: #0F1620;
+  --navy-soft: #182231;
+  --bg: #F2F3F0;
+  --card: #FFFFFF;
+  --line: #E4E5E1;
+  --ink: #12181F;
+  --muted: #6B7280;
+  --amber: #E8A33D;
+  --amber-ink: #7A4C0C;
+  --green: #2F9E6E;
+  --green-bg: #E4F5EC;
+  --blue: #3C7DD9;
+  --blue-bg: #E6EEFC;
+  --purple: #7C5CFC;
+  --purple-bg: #EEE9FF;
+  --plum: #A83E82;
+  --plum-bg: #F7E7F0;
+  --red: #D8503A;
+  --red-bg: #FCE9E5;
+  --field-bg: #fff;
+  --hover-row: #F0F1EC;
+  --even-row: #F7F7F5;
+  --ghost-hover: #F7F7F5;
+  --scrollbar-thumb: #D3D5CE;
+}
+
+body.dark {
+  --bg: #111318;
+  --card: #1A1D24;
+  --line: #2A2D35;
+  --ink: #E8EAF0;
+  --muted: #8B919A;
+  --green-bg: rgba(47,158,110,0.15);
+  --blue-bg: rgba(60,125,217,0.15);
+  --purple-bg: rgba(124,92,252,0.15);
+  --plum-bg: rgba(168,62,130,0.15);
+  --red-bg: rgba(216,80,58,0.15);
+  --field-bg: #22252C;
+  --hover-row: #22252C;
+  --even-row: #1E2028;
+  --ghost-hover: #2A2D35;
+  --scrollbar-thumb: #3A3D45;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+}
+
+h1, h2, h3, .display {
+  font-family: 'Sora', system-ui, sans-serif;
+  letter-spacing: -0.01em;
+}
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+
+/* ---------- Layout ---------- */
+#app { display: flex; min-height: 100vh; }
+
+.sidebar {
+  width: 236px;
+  background: var(--navy);
+  color: #C9D1DB;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.brand-mark {
+  width: 30px; height: 30px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--amber), #C97A1F);
+  display: flex; align-items: center; justify-content: center;
+  color: #10161B; font-family: 'Sora'; font-weight: 800; font-size: 15px;
+}
+
+.brand-name { font-family: 'Sora'; font-weight: 700; font-size: 16px; color: #fff; }
+.brand-sub { font-size: 10px; color: #8792A0; letter-spacing: .04em; }
+
+.nav { flex: 1; overflow-y: auto; padding: 10px 10px; }
+.nav-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 12px; margin-bottom: 2px;
+  border-radius: 7px; cursor: pointer;
+  color: #AEB7C2; font-size: 13.5px; font-weight: 500;
+  border-left: 3px solid transparent;
+}
+.nav-item:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.nav-item.active {
+  background: var(--navy-soft);
+  color: #fff;
+  border-left: 3px solid var(--amber);
+}
+.nav-item .icon { width: 16px; text-align: center; opacity: .85; }
+
+.sidebar-foot {
+  padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 11px; color: #6E7787;
+}
+
+.main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+
+.topbar {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 26px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.topbar h1 { font-size: 19px; margin: 0; font-weight: 700; }
+.topbar .crumb { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.content { padding: 24px 26px; flex: 1; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  border: none; border-radius: 7px; padding: 9px 16px;
+  font-family: 'Inter'; font-weight: 600; font-size: 13.5px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.btn-primary { background: var(--navy); color: #fff; }
+.btn-primary:hover { background: var(--navy-soft); }
+.btn-amber { background: var(--amber); color: #2B1B03; }
+.btn-amber:hover { filter: brightness(1.05); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn-ghost:hover { background: var(--ghost-hover); }
+.btn-danger { background: var(--red-bg); color: var(--red); }
+.btn-sm { padding: 6px 10px; font-size: 12.5px; border-radius: 6px; }
+.icon-btn {
+  width: 30px; height: 30px; border-radius: 6px; border: none;
+  display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+  font-size: 13px;
+}
+
+/* ---------- Cards / tables ---------- */
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 10px; padding: 18px;
+}
+
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
+.stat-card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.stat-label { font-size: 12px; color: var(--muted); font-weight: 500; }
+.stat-value { font-family: 'JetBrains Mono'; font-size: 24px; font-weight: 600; margin-top: 6px; }
+.stat-accent { width: 30px; height: 3px; border-radius: 2px; margin-bottom: 10px; }
+
+table { width: 100%; border-collapse: collapse; }
+thead th {
+  text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--muted); font-weight: 600; padding: 10px 12px; border-bottom: 1px solid var(--line);
+}
+tbody td { padding: 13px 12px; border-bottom: 1px solid var(--line); font-size: 13.5px; vertical-align: middle; }
+tbody tr:nth-child(even) { background: var(--even-row); }
+tbody tr:hover { background: var(--hover-row); }
+.sub { color: var(--muted); font-size: 12px; margin-top: 2px; }
+a.link { color: var(--blue); text-decoration: none; font-weight: 600; }
+a.link:hover { text-decoration: underline; }
+
+.toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 10px; flex-wrap: wrap; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .03em;
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; }
+.b-green { background: var(--green-bg); color: var(--green); }
+.b-blue { background: var(--blue-bg); color: var(--blue); }
+.b-purple { background: var(--purple-bg); color: var(--purple); }
+.b-plum { background: var(--plum-bg); color: var(--plum); }
+.b-red { background: var(--red-bg); color: var(--red); }
+.b-amber { background: #FBF0DC; color: var(--amber-ink); }
+
+/* ---------- Login ---------- */
+.login-wrap {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  background: var(--navy);
+  background-image: radial-gradient(circle at 20% 20%, rgba(232,163,61,0.12), transparent 40%);
+}
+.login-card { background: var(--card); border-radius: 14px; padding: 38px 34px; width: 360px; }
+.login-card .brand { border: none; padding: 0 0 22px 0; }
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 12.5px; font-weight: 600; margin-bottom: 6px; color: var(--ink); }
+.field input, .field select, .field textarea {
+  width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 7px;
+  font-family: 'Inter'; font-size: 13.5px; background: var(--field-bg); color: var(--ink);
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--amber); border-color: transparent; }
+.login-error { background: var(--red-bg); color: var(--red); padding: 8px 12px; border-radius: 7px; font-size: 12.5px; margin-bottom: 12px; display:none; }
+.hint { font-size: 11.5px; color: var(--muted); margin-top: 16px; text-align: center; }
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(15,22,32,0.5);
+  display: flex; align-items: center; justify-content: center; z-index: 50; padding: 20px;
+}
+.modal {
+  background: var(--card); border-radius: 12px; padding: 24px; width: 100%; max-width: 520px;
+  max-height: 88vh; overflow-y: auto;
+}
+.modal h3 { margin: 0 0 16px 0; font-size: 17px; }
+.modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; }
+.row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.item-row { display: grid; grid-template-columns: 2fr 80px 100px 30px; gap: 8px; align-items: center; margin-bottom: 8px; }
+.empty { text-align: center; color: var(--muted); padding: 40px 10px; font-size: 13.5px; }
+.total-line { text-align: right; font-family: 'JetBrains Mono'; font-weight: 600; font-size: 16px; margin-top: 10px; }
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 6px; }
+
+/* ---------- Impressão ---------- */
+#print-area { display: none; }
+
+@media print {
+  body * { visibility: hidden; }
+  #print-area, #print-area * { visibility: visible; }
+  #print-area {
+    display: block;
+    position: absolute; top: 0; left: 0; width: 100%;
+    padding: 10px 6px;
+    font-family: 'Inter', sans-serif; color: #12181F;
+  }
+
+  #print-area .print-header {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    border-bottom: 2px solid #12181F; padding-bottom: 14px; margin-bottom: 18px;
+  }
+  #print-area h1 { font-family: 'Sora'; font-size: 21px; margin: 0 0 2px 0; }
+  #print-area .muted { color: #6B7280; font-size: 12px; }
+  #print-area .doc-tag { text-align: right; }
+  #print-area .doc-tag .doc-number { font-family: 'Sora'; font-size: 16px; font-weight: 700; }
+
+  #print-area .hr { border: none; border-top: 1px solid #E4E5E1; margin: 16px 0; }
+
+  #print-area .field-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    border: 1px solid #E4E5E1; border-radius: 6px; overflow: hidden; margin-bottom: 18px;
+  }
+  #print-area .field-box { padding: 10px 14px; border-right: 1px solid #E4E5E1; border-bottom: 1px solid #E4E5E1; }
+  #print-area .field-box:last-child { border-right: none; }
+  #print-area .field-label { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: #6B7280; margin-bottom: 3px; }
+  #print-area .field-value { font-size: 13.5px; font-weight: 600; }
+
+  #print-area .section-title { font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: #6B7280; font-weight: 700; margin: 18px 0 6px 0; }
+
+  #print-area table { width: 100%; border-collapse: collapse; margin-top: 4px; border: 1px solid #E4E5E1; }
+  #print-area th { text-align: left; font-size: 11px; text-transform: uppercase; color: #6B7280; padding: 8px 10px; background: #F5F5F3; border-bottom: 1px solid #E4E5E1; }
+  #print-area td { padding: 9px 10px; border-bottom: 1px solid #F0F0EE; font-size: 13px; }
+  #print-area tr:last-child td { border-bottom: none; }
+  #print-area .mono { font-family: 'JetBrains Mono', monospace; }
+
+  #print-area .total-box { display: flex; justify-content: flex-end; margin-top: 16px; }
+  #print-area .total-inner { border: 1.5px solid #12181F; border-radius: 6px; padding: 10px 22px; text-align: right; }
+  #print-area .total-inner .total-label { font-size: 10.5px; text-transform: uppercase; color: #6B7280; }
+  #print-area .total-inner .total-value { font-size: 19px; font-weight: 700; font-family: 'JetBrains Mono'; }
+
+  #print-area .signature-row { display: flex; justify-content: space-between; margin-top: 60px; gap: 40px; }
+  #print-area .signature-line { flex: 1; border-top: 1px solid #12181F; padding-top: 6px; font-size: 11.5px; text-align: center; color: #6B7280; }
+
+  #print-area .row { display: flex; justify-content: space-between; }
+  #print-area .foot { margin-top: 34px; text-align: center; font-size: 11px; color: #9AA1AC; border-top: 1px solid #E4E5E1; padding-top: 10px; }
+
+  /* Cupom de acompanhamento — formato estreito, imitando impressora
+     termica/fiscal de 80mm. Funciona tanto impresso numa impressora comum
+     (fica uma faixa estreita centralizada na folha) quanto numa impressora
+     termica de verdade (a maioria configura a largura da pagina no driver). */
+  #print-area .cupom {
+    width: 78mm; max-width: 100%; margin: 0 auto;
+    font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.5;
+  }
+  #print-area .cupom-center { text-align: center; }
+  #print-area .cupom-muted { color: #6B7280; font-size: 10.5px; }
+  #print-area .cupom-mono { font-family: 'JetBrains Mono', monospace; }
+  #print-area .cupom-hr { border-top: 1px dashed #12181F; margin: 8px 0; }
+  #print-area .cupom-linha { display: flex; justify-content: space-between; gap: 8px; }
+  #print-area .cupom-item { display: flex; justify-content: space-between; gap: 8px; padding: 2px 0; }
+  #print-area .cupom-total { font-weight: 700; font-size: 13px; }
+
+  @page { margin: 16mm; }
+}
+

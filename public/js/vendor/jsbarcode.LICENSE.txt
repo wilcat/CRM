@@ -1,0 +1,5 @@
+JsBarcode (vendorizado localmente para funcionar offline, sem depender de CDN)
+https://github.com/lindell/JsBarcode
+
+Copyright (c) 2016 Johan Lindell (johan@lindell.me)
+Licenca MIT — veja o cabecalho do proprio arquivo jsbarcode.min.js para o texto completo.

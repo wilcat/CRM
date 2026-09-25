@@ -2,10 +2,10 @@
   "name": "fluxo-erp",
   "version": "1.0.0",
   "description": "Fluxo ERP - Sistema de gestao (vendas, produtos, estoque, orcamentos, ordens de servico, financeiro)",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node server.js",
-    "seed": "node seed.js"
+    "start": "node src/server.js",
+    "seed": "node scripts/seed.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
